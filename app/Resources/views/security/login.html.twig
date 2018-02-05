@@ -1,0 +1,27 @@
+{% extends 'signin.html.twig' %}
+{% block body %}
+{% block form %}
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+
+<div class="container" style="width:35%" >
+<form action="{{ path('login') }}" method="post">
+    <label for="username" class="sr-only">Username:</label>
+    <input type="text" id="username" class="form-control" name="_username" value="{{ last_username }}" placeholder="Nombre de Usuario" />
+
+    <label for="password" class="sr-only">Password:</label>
+    <input type="password" id="password" class="form-control" name="_password" placeholder="Contraseña"/>
+
+    {#
+        If you want to control the URL the user
+        is redirected to on success (more details below)
+        <input type="hidden" name="_target_path" value="/account" />
+    #}
+
+    <button type="submit" class="btn btn-lg btn-primary btn-block" style="margin-top:20px">login</button>
+</form>
+</div>
+{% endblock %}
+{% endblock %}
