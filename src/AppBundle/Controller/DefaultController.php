@@ -37,27 +37,27 @@ class DefaultController extends Controller
       $ticket = new Ticket();
 
       $form = $this->CreateFormBuilder($ticket)
-      ->add('title', TextType::class)
-      ->add('date', DateType::class)
-      ->add('details', TextareaType::class)
-      ->add('cat', ChoiceType::class, array(
+      ->add('titulo', TextType::class, array('attr'=>array('class'=>'form-control', 'style' => 'margin-bottom:15px')))
+      #->add('date', DateType::class, array('attr'=>array('class'=>'form-control', 'style' => 'margin-bottom:15px')))
+      ->add('descripcion', TextareaType::class, array('attr'=>array('class'=>'form-control', 'style' => 'margin-bottom:15px')))
+      ->add('categoria', ChoiceType::class, array(
     'choices'  => array(
         'Tecnologia' => 'tech',
         'Administrativo' => 'admin',
-        'Servicio' => 'serv'),))
-      ->add('enviar', SubmitType::class)
+        'Servicio' => 'serv'),), array('attr'=>array('class'=>'form-control', 'style' => 'margin-bottom:15px')))
+      ->add('enviar', SubmitType::class, array('attr'=>array('class'=>'btn btn-primary', 'style' => 'margin-bottom:15px')))
       ->getForm();
 
       $form->handleRequest($request);
 
       if ($form->isSubmitted() && $form->isValid()) {
-        $title = $form['title']->getData();
+        $title = $form['titulo']->getData();
         $estado = 'procesando';
-        $fecha = $form['date']->getData();
-        $descripcion = $form['details']->getData();
-        $categoria = $form['cat']->getData();
+        $fecha = new\DateTime('now');#$form['date']->getData();
+        $descripcion = $form['descripcion']->getData();
+        $categoria = $form['categoria']->getData();
 
-        $ticket->setTitle($title);
+        $ticket->setTitulo($title);
         $ticket->setEstado($estado);
         $ticket->setFecha($fecha);
         $ticket->setDescripcion($descripcion);

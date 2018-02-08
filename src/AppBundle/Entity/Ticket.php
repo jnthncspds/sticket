@@ -24,30 +24,37 @@ class Ticket
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="titulo", type="string", length=255)
      */
-    private $title;
+    private $titulo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="details", type="text")
+     * @ORM\Column(name="estado", type="string", length=255)
      */
-    private $details;
+    private $estado;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="cat", type="string", length=255)
+     * @ORM\Column(name="descripcion", type="text")
      */
-    private $cat;
+    private $descripcion;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="date")
+     * @ORM\Column(name="fecha", type="date")
      */
-    private $date;
+    private $fecha;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="categoria", type="string", length=255)
+     */
+    private $categoria;
 
 
     /**
@@ -61,99 +68,123 @@ class Ticket
     }
 
     /**
-     * Set title
+     * Set titulo
      *
-     * @param string $title
+     * @param string $titulo
      *
      * @return Ticket
      */
-    public function setTitle($title)
+    public function setTitulo($titulo)
     {
-        $this->title = $title;
+        $this->titulo = $titulo;
 
         return $this;
     }
 
     /**
-     * Get title
+     * Get titulo
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitulo()
     {
-        return $this->title;
+        return $this->titulo;
     }
 
     /**
-     * Set details
+     * Set estado
      *
-     * @param string $details
+     * @param string $estado
      *
      * @return Ticket
      */
-    public function setDetails($details)
+    public function setEstado($estado)
     {
-        $this->details = $details;
+        $this->estado = $estado;
 
         return $this;
     }
 
     /**
-     * Get details
+     * Get estado
      *
      * @return string
      */
-    public function getDetails()
+    public function getEstado()
     {
-        return $this->details;
+        return $this->estado;
     }
 
     /**
-     * Set cat
+     * Set descripcion
      *
-     * @param string $cat
+     * @param string $descripcion
      *
      * @return Ticket
      */
-    public function setCat($cat)
+    public function setDescripcion($descripcion)
     {
-        $this->cat = $cat;
+        $this->descripcion = $descripcion;
 
         return $this;
     }
 
     /**
-     * Get cat
+     * Get descripcion
      *
      * @return string
      */
-    public function getCat()
+    public function getDescripcion()
     {
-        return $this->cat;
+        return $this->descripcion;
     }
 
     /**
-     * Set date
+     * Set fecha
      *
-     * @param \DateTime $date
+     * @param \DateTime $fecha
      *
      * @return Ticket
      */
-    public function setDate($date)
+    public function setFecha($fecha)
     {
-        $this->date = $date;
+        $this->fecha = $fecha;
 
         return $this;
     }
 
     /**
-     * Get date
+     * Get fecha
      *
      * @return \DateTime
      */
-    public function getDate()
+    public function getFecha()
     {
-        return $this->date;
+        return $this->fecha;
+    }
+
+    /**
+     * Set categoria
+     *
+     * @param string $categoria
+     *
+     * @return Ticket
+     */
+    public function setCategoria($categoria)
+    {
+        $this->categoria = $categoria;
+
+        return $this;
+    }
+
+    /**
+     * Get categoria
+     *
+     * @return string
+     */
+    public function getCategoria()
+    {
+        return $this->categoria;
     }
 }
 
