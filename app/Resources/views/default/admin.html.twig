@@ -1,1 +1,30 @@
 {% extends 'controlpanel.html.twig' %}
+{% block body %} <h1 style='margin-top:20px'>Lista de Tickets</h1>
+{% block table %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Titulo</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Accion</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for t in list %}
+    <tr>
+      <th scope="row">{{t.id}}</th>
+      <td>{{t.titulo}}</td>
+      <td>{{t.fecha|date('d/m/y')}}</td>
+      <td>{{t.estado}}</td>
+      <td><a href="/test/details/{{t.id}}" class="btn btn-success">Detalles</a>
+        <a href="/test/edit/{{t.id}}" class="btn btn-default">Editar</a>
+        <a href="/test/delete/{{t.id}}" class="btn btn-danger">Borrar</a>
+      </td>
+    </tr>
+  </tbody>
+  {% endfor %}
+</table>
+{% endblock %}
+{% endblock %}

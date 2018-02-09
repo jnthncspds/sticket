@@ -24,9 +24,10 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
+        /*return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+        ]);*/
+        return $this->render('default/home.html.twig');
     }
 
 
@@ -77,13 +78,5 @@ class DefaultController extends Controller
       array('form'=>$form->createView(), 'ticket' => $ticket
     ));
 
-    }
-
-    /**
-    * @Route("/admin", name="administrador")
-    */
-
-    public function adminAction(){
-      return $this->render('default/admin.html.twig');
     }
 }
