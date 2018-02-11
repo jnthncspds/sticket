@@ -37,6 +37,8 @@ class DefaultController extends Controller
     public function repAction(Request $request){
       $ticket = new Ticket();
 
+
+
       $form = $this->CreateFormBuilder($ticket)
       ->add('titulo', TextType::class, array('attr'=>array('class'=>'form-control', 'style' => 'margin-bottom:15px')))
       #->add('date', DateType::class, array('attr'=>array('class'=>'form-control', 'style' => 'margin-bottom:15px')))
@@ -53,16 +55,29 @@ class DefaultController extends Controller
 
       if ($form->isSubmitted() && $form->isValid()) {
         $title = $form['titulo']->getData();
-        $estado = 'procesando';
-        $fecha = new\DateTime('now');#$form['date']->getData();
+        $estado = 'Procesando';
+        #$fecha = new\DateTime('now');#$form['date']->getData();
         $descripcion = $form['descripcion']->getData();
         $categoria = $form['categoria']->getData();
 
+        $user = $this->getUser();
+
+
+      /*  $query = $this->createQueryBuilder('AppBundle:Ticket')
+            ->select('username')
+            ->where('u.id_usuario = :id')
+            ->setParameter('id_usuario', $user->getId())
+            ->getQuery()
+            ->getOneOrNullResult(); */
+
+
+        $ticket->setIdUsuario($user->getId());
         $ticket->setTitulo($title);
         $ticket->setEstado($estado);
-        $ticket->setFecha($fecha);
+    #    $ticket->setFecha($fecha);
         $ticket->setDescripcion($descripcion);
         $ticket->setCategoria($categoria);
+        $ticket->setPrioridad('Normal');
 
 
         $em = $this->getDoctrine()->getManager();

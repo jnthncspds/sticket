@@ -22,6 +22,13 @@ class Ticket
     private $id;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id_usuario", type="integer")
+     */
+    private $idUsuario;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="titulo", type="string", length=255)
@@ -45,7 +52,7 @@ class Ticket
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha", type="date")
+     * @ORM\Column(name="fecha", type="datetime")
      */
     private $fecha;
 
@@ -56,6 +63,13 @@ class Ticket
      */
     private $categoria;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prioridad", type="string", length=255)
+     */
+    private $prioridad;
+
 
     /**
      * Get id
@@ -65,6 +79,30 @@ class Ticket
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set idUsuario
+     *
+     * @param integer $idUsuario
+     *
+     * @return Ticket
+     */
+    public function setIdUsuario($idUsuario)
+    {
+        $this->idUsuario = $idUsuario;
+
+        return $this;
+    }
+
+    /**
+     * Get idUsuario
+     *
+     * @return int
+     */
+    public function getIdUsuario()
+    {
+        return $this->idUsuario;
     }
 
     /**
@@ -185,6 +223,30 @@ class Ticket
     public function getCategoria()
     {
         return $this->categoria;
+    }
+
+    /**
+     * Set prioridad
+     *
+     * @param string $prioridad
+     *
+     * @return Ticket
+     */
+    public function setPrioridad($prioridad)
+    {
+        $this->prioridad = $prioridad;
+
+        return $this;
+    }
+
+    /**
+     * Get prioridad
+     *
+     * @return string
+     */
+    public function getPrioridad()
+    {
+        return $this->prioridad;
     }
 }
 

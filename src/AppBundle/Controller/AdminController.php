@@ -20,7 +20,14 @@ class AdminController extends Controller
       */
 
       public function adminAction(){
+
+        $em = $this->getDoctrine()->getManager();
         $list = $this->getDoctrine()->getRepository('AppBundle:Ticket')->findAll();
-        return $this->render('default/admin.html.twig', array('list' => $list));
+
+        $query = $em->createQuery('SELECT u.username, t.id, t.titulo, t.estado, t.fecha, t.categoria, t.prioridad FROM AppBundle:User u INNER JOIN AppBundle:Ticket t WITH u.id = t.idUsuario');
+        $users = $query->getResult();
+
+
+        return $this->render('default/admin.html.twig', array('list' => $list, 'users' => $users));
       }
   }

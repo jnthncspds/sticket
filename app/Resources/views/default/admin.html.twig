@@ -8,23 +8,30 @@
       <th scope="col">Titulo</th>
       <th scope="col">Fecha</th>
       <th scope="col">Estado</th>
+      <th scope="col">Prioridad</th>
+      <th scope="col">Usuario</th>
       <th scope="col">Accion</th>
     </tr>
   </thead>
   <tbody>
-    {% for t in list %}
     <tr>
-      <th scope="row">{{t.id}}</th>
-      <td>{{t.titulo}}</td>
-      <td>{{t.fecha|date('d/m/y')}}</td>
-      <td>{{t.estado}}</td>
-      <td><a href="/test/details/{{t.id}}" class="btn btn-success">Detalles</a>
-        <a href="/test/edit/{{t.id}}" class="btn btn-default">Editar</a>
-        <a href="/test/delete/{{t.id}}" class="btn btn-danger">Borrar</a>
+
+          {% for user in users %}
+
+      <th scope="row">{{user.id}}</th>
+      <td>{{user.titulo}}</td>
+      <td>{{user.fecha|date('d/m/y')}}</td>
+      <td>{{user.estado}}</td>
+      <td>{{user.prioridad}}</td>
+      <td>{{user.username}}</td>
+      <td><a href="/test/details/{{user.id}}" class="btn btn-success">Detalles</a>
+        <a href="/test/edit/{{user.id}}" class="btn btn-default">Editar</a>
+        <a href="/test/delete/{{user.id}}" class="btn btn-danger">Borrar</a>
       </td>
     </tr>
+
+      {% endfor %}
   </tbody>
-  {% endfor %}
 </table>
 {% endblock %}
 {% endblock %}
