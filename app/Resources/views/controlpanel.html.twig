@@ -107,11 +107,13 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
           <div>
-            <h1 class="h2">Tickets</h1>
+            {% block body %}
             <div>
+            
           {% block table %}{% endblock %}
 
           </div>
+          {% endblock %}
           <!-- grafica, en caso de querer utilizarla <h1 class="h2">Dashboard</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">

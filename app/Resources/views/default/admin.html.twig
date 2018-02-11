@@ -16,17 +16,17 @@
   <tbody>
     <tr>
 
-          {% for user in users %}
+          {% for dato in datos %}
 
-      <th scope="row">{{user.id}}</th>
-      <td>{{user.titulo}}</td>
-      <td>{{user.fecha|date('d/m/y')}}</td>
-      <td>{{user.estado}}</td>
-      <td>{{user.prioridad}}</td>
-      <td>{{user.username}}</td>
-      <td><a href="/test/details/{{user.id}}" class="btn btn-success">Detalles</a>
-        <a href="/test/edit/{{user.id}}" class="btn btn-default">Editar</a>
-        <a href="/test/delete/{{user.id}}" class="btn btn-danger">Borrar</a>
+      <th scope="row">{{dato.id}}</th>
+      <td>{{dato.titulo}}</td>
+      <td>{{dato.fecha|date('d/m/y')}}</td>
+      <td>{{dato.estado}}</td>
+      <td>{{dato.prioridad}}</td>
+      <td>{{dato.username}}</td>
+      <td><a href="{{ path('detalles', {'id': dato.id}) }}" class="btn btn-success">Detalles</a>
+        <a href="{{ path('editar', {'id': dato.id}) }}" class="btn btn-default">Editar</a>
+        <a href="/admin/delete/{{dato.id}}" class="btn btn-danger">Borrar</a>
       </td>
     </tr>
 

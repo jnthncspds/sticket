@@ -44,7 +44,7 @@ class DefaultController extends Controller
       #->add('date', DateType::class, array('attr'=>array('class'=>'form-control', 'style' => 'margin-bottom:15px')))
       ->add('descripcion', TextareaType::class, array('attr'=>array('class'=>'form-control', 'style' => 'margin-bottom:15px')))
       ->add('categoria', ChoiceType::class, array(
-    'choices'  => array(
+        'choices'  => array(
         'Tecnologia' => 'tech',
         'Administrativo' => 'admin',
         'Servicio' => 'serv'),), array('attr'=>array('class'=>'form-control', 'style' => 'margin-bottom:15px')))

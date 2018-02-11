@@ -1,0 +1,33 @@
+{% extends 'controlpanel.html.twig' %}
+{% block body %}
+  <body>
+    <div class="container">
+      <div class="jumbotron mt-3">
+        <h1 style="margin-bottom:25px">Detalles de {{t.titulo}}</h1>
+        <h3>Descripción:</h3>
+        <p class="lead" style="margin-bottom:25px">{{t.descripcion}}</p>
+        <h3>Fecha:</h3>
+        <p class="lead" style="margin-bottom:25px">{{t.fecha|date('d-m-y-h:i:j')}}</p>
+        <h3>Estado:</h3>
+        <p class="lead" style="margin-bottom:25px">{{t.estado}}</p>
+        <h3>Prioridad:</h3>
+        <p class="lead" style="margin-bottom:25px">{{t.prioridad}}</p>
+        <a class="btn btn-lg btn-primary" href="{{path('administrador')}}" role="button">Volver al panel de control&raquo;</a>
+      </div>
+    </div>
+
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../../../dist/js/bootstrap.min.js"></script>
+  </body>
+
+
+{% endblock %}
