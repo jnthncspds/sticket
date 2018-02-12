@@ -60,22 +60,22 @@ class AdminController extends Controller
         ->add('titulo', TextType::class, array('attr'=>array('class'=>'form-control', 'style' => 'margin-bottom:15px')))
         #->add('date', DateType::class, array('attr'=>array('class'=>'form-control', 'style' => 'margin-bottom:15px')))
         ->add('descripcion', TextareaType::class, array('attr'=>array('class'=>'form-control', 'style' => 'margin-bottom:15px')))
-        ->add('categoria', ChoiceType::class, array(
+        ->add('categoria', ChoiceType::class, array('attr'=>array('class'=>'nav-link dropdown-toggle', 'style' => 'margin:10px'),
           'choices'  => array(
           'Tecnologia' => 'tech',
           'Administrativo' => 'admin',
-          'Servicio' => 'serv'),), array('attr'=>array('class'=>'selectpicker', 'style' => 'margin-bottom:15px')))
-        ->add('prioridad', ChoiceType::class, array(
+          'Servicio' => 'serv'),))
+        ->add('prioridad', ChoiceType::class, array('attr'=>array('class'=>'nav-link dropdown-toggle', 'style' => 'margin:10px'),
           'choices'  => array(
           'Alto' => 'Alto',
           'Normal' => 'Normal',
-          'Bajo' => 'Bajo'),), array('attr'=>array('class'=>'selectpicker', 'style' => 'margin-bottom:15px')))
-        ->add('estado', ChoiceType::class, array(
+          'Bajo' => 'Bajo'),))
+        ->add('estado', ChoiceType::class, array('attr'=>array('class'=>'nav-link dropdown-toggle', 'style' => 'margin:10px'),
           'choices'  => array(
           'Procesando' => 'Procesando',
           'Declinado' => 'Declinado',
-          'Resuelto' => 'Resuelto'),), array('attr'=>array('class'=>'selectpicker', 'style' => 'margin-bottom:15px')))
-        ->add('editar', SubmitType::class, array('attr'=>array('class'=>'btn btn-primary', 'style' => 'margin-bottom:15px')))
+          'Resuelto' => 'Resuelto'),))
+        ->add('editar', SubmitType::class, array('attr'=>array('class'=>'btn btn-primary', 'style' => 'margin:15px')))
         ->getForm();
 
         $form->handleRequest($request);
@@ -99,6 +99,10 @@ class AdminController extends Controller
 
           $em->persist($ticket);
           $em->flush();
+
+          $this->addFlash(
+            'notice', 'Ticket Editado'
+          );
 
           return $this->redirectToRoute('administrador');
 

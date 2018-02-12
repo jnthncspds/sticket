@@ -85,6 +85,10 @@ class DefaultController extends Controller
         $em->persist($ticket);
         $em->flush();
 
+        $this->addFlash(
+          'notice', 'Ticket Creado'
+        );
+
         return $this->redirectToRoute('homepage');
 
         # code...
