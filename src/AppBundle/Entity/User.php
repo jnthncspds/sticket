@@ -53,6 +53,10 @@ class User implements UserInterface, \Serializable
     {
         return $this->username;
     }
+    public function getEmail()
+    {
+        return $this->email;
+    }
 
     public function getSalt()
     {

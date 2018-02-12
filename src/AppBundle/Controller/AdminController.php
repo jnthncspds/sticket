@@ -24,7 +24,11 @@ class AdminController extends Controller
         $em = $this->getDoctrine()->getManager();
         $list = $this->getDoctrine()->getRepository('AppBundle:Ticket')->findAll();
 
-        $query = $em->createQuery('SELECT u.username, t.id, t.titulo, t.estado, t.fecha, t.categoria, t.prioridad FROM AppBundle:User u INNER JOIN AppBundle:Ticket t WITH u.id = t.idUsuario');
+        $query = $em->createQuery('SELECT
+          u.username, t.id, t.titulo, t.estado, t.fecha, t.categoria, t.prioridad
+          FROM AppBundle:User u
+          INNER JOIN AppBundle:Ticket t
+          WITH u.id = t.idUsuario');
         $datos = $query->getResult();
 
 
@@ -112,5 +116,45 @@ class AdminController extends Controller
         'ticket' => $ticket,
         'form' => $form->createView(),
       ));
+  }
+  /**
+  * @Route("/admin/user", name="usuarios")
+  */
+
+  public function userAction(){
+    $usuario = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
+
+    return $this->render('default/user.html.twig', array('usuario' => $usuario));
+  }
+
+  /**
+  * @Route("/admin/delete/{id}", name="borrar")
+  */
+
+  public function deleteAction($id, Request $request){
+    $t = $this->getDoctrine()
+    ->getRepository('AppBundle:Ticket')
+    ->find($id);
+
+    return $this->render('default/borrarwarning.html.twig', array(
+      't' => $t
+    ));
+  }
+
+  /**
+  *@Route("/admin/delete/confirmed/{id}", name="delete")
+  */
+
+  public function borrarAction($id){
+    $t = $this->getDoctrine()
+    ->getRepository('AppBundle:Ticket')
+    ->find($id);
+    $em = $this->getDoctrine()->getManager();
+
+    $em->remove($t);
+    $em->flush();
+
+    return $this->redirectToRoute('administrador');
+
   }
 }
