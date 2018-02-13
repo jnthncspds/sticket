@@ -1,5 +1,8 @@
-{% extends 'nav.html.twig' %}
+{% extends 'dashboard/nav.html.twig' %}
 {% block body %}
+<h1>Reporte o Ticket</h1>
+
+<p class="lead">Escriba la descripcion de su problema y seleccione una categoria, se le asignará un Numero ID a su ticket para ser identificado.</p>
 
 {{ form_start(form) }}
 {{ form_widget(form) }}

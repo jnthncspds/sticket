@@ -89,7 +89,7 @@ class DefaultController extends Controller
           'notice', 'Ticket Creado'
         );
 
-        return $this->redirectToRoute('homepage');
+        return $this->redirectToRoute('t-confirmado');
 
         # code...
       }
@@ -97,5 +97,13 @@ class DefaultController extends Controller
       array('form'=>$form->createView(), 'ticket' => $ticket
     ));
 
+    }
+
+    /**
+    * @Route("/rep/confirmed", name="t-confirmado")
+    */
+
+    public function confirmAction(){
+      return $this->render('default/confirm.html.twig');
     }
 }

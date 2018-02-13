@@ -18,20 +18,14 @@
   <body>
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-      <a class="navbar-brand" href="{{path('homepage')}}">Inicio</a>
+      <a class="navbar-brand" href="{{path('homepage')}}">INICIO</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="{{path('reportar')}}">Enviar un reporte <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
+            <a class="nav-link" href="{{path('logout')}}"> Cerrar Sesion<span class="sr-only">(current)</span></a>
           </li>
         </ul>
         <!--<form class="form-inline mt-2 mt-md-0">
@@ -43,9 +37,6 @@
 
     <main role="main" class="container">
       <div class="jumbotron">
-        <h1>Reporte o Ticket</h1>
-
-        <p class="lead">Escriba la descripcion de su problema y seleccione una categoria, se le asignará un Numero ID a su ticket para ser identificado.</p>
 
         {% block body %}{% endblock %}
       </div>
