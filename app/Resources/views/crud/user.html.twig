@@ -1,6 +1,6 @@
 {% extends 'dashboard/controlpanel.html.twig' %}
 {% block body %}
-<h1 style="margin-top: 20px"> Lista de Usuarios Registrados </h1>
+<h1 style="margin-top: 20px"> Lista de Usuarios que han hecho un reporte: </h1>
 {% block table %}
 <table class="table">
   <thead>
@@ -8,6 +8,7 @@
       <th scope="col">#</th>
       <th scope="col">Nombre de usuario</th>
       <th scope="col">Email</th>
+      <th scope="col">Nombre de ticket</th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +17,7 @@
       <th scope="row">{{u.id}}</th>
       <td>{{u.username}}</td>
       <td>{{u.email}}</td>
+      <td>{{u.titulo}}</td>
     </tr>
       {% endfor %}
   </tbody>

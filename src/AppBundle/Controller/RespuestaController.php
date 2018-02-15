@@ -22,9 +22,9 @@ class RespuestaController extends Controller
   * @Route("/admin/respuestas", name="respuestas")
   */
   public function respuestasAction(){
-    $em = $this->getDoctrine()->getManager();
-    $list = $this->getDoctrine()->getRepository('AppBundle:Ticket')->findAll();
 
+    $list = $this->getDoctrine()->getRepository('AppBundle:Ticket')->findAll();
+    $em = $this->getDoctrine()->getManager();
     $query = $em->createQuery('SELECT
       u.username, t.id, t.titulo, t.estado, t.fecha, t.categoria, t.prioridad
       FROM AppBundle:User u

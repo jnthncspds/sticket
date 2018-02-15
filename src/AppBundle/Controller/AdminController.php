@@ -40,8 +40,15 @@ class AdminController extends Controller
       */
 
       public function userAction(){
-      $usuario = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
+      $user = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
+      $em = $this->getDoctrine()->getManager();
+      $query = $em->createQuery('SELECT
+        u.id, u.username, u.email, t.titulo
+        FROM AppBundle:User u
+        INNER JOIN AppBundle:Ticket t
+        WITH u.id = t.idUsuario');
 
+        $usuario = $query->getResult();
       return $this->render('crud/user.html.twig', array('usuario' => $usuario));
       }
 }
