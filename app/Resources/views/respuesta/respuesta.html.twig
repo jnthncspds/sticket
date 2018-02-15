@@ -1,0 +1,35 @@
+{% extends 'dashboard/controlpanel.html.twig' %}
+{% block body %} <h1 style='margin-top:20px'>Lista de Tickets</h1>
+{% block table %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Titulo</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Prioridad</th>
+      <th scope="col">Usuario</th>
+      <th scope="col">Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+
+          {% for dato in ticket %}
+
+      <th scope="row">{{dato.id}}</th>
+      <td>{{dato.titulo}}</td>
+      <td>{{dato.fecha|date('d/m/y')}}</td>
+      <td>{{dato.estado}}</td>
+      <td>{{dato.prioridad}}</td>
+      <td>{{dato.username}}</td>
+      <td><a href="{{ path('respondiendo', {'id': dato.id}) }}" class="btn btn-success">Responder</a>
+      </td>
+    </tr>
+
+      {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+{% endblock %}

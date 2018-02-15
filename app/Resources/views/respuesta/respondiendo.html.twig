@@ -1,0 +1,8 @@
+{% extends 'dashboard/controlpanel.html.twig' %}
+{% block body %}
+<h2>Responder Ticket: {{ticket.titulo}}</h2>
+<p style="margin-bottom:25px">Número de ticket: {{ticket.id}}</p>
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+{% endblock %}
