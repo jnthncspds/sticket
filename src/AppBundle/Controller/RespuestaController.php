@@ -23,7 +23,6 @@ class RespuestaController extends Controller
   */
   public function respuestasAction(){
 
-    $list = $this->getDoctrine()->getRepository('AppBundle:Ticket')->findAll();
     $em = $this->getDoctrine()->getManager();
     $query = $em->createQuery('SELECT
       u.username, t.id, t.titulo, t.estado, t.fecha, t.categoria, t.prioridad
@@ -52,11 +51,6 @@ class RespuestaController extends Controller
     $form = $this->CreateFormBuilder()
     ->add('titulo', TextType::class, array('attr'=>array('class'=>'form-control', 'style' => 'margin-bottom:15px')))
     ->add('respuesta', TextareaType::class, array('attr'=>array('class'=>'form-control', 'style' => 'margin-bottom:15px')))
-    ->add('categoria', ChoiceType::class, array('attr'=>array('class'=>'nav-link dropdown-toggle', 'style' => 'margin:10px'),
-      'choices'  => array(
-      'Tecnologia' => 'tech',
-      'Administrativo' => 'admin',
-      'Servicio' => 'serv'),))
     ->add('prioridad', ChoiceType::class, array('attr'=>array('class'=>'nav-link dropdown-toggle', 'style' => 'margin:10px'),
       'choices'  => array(
       'Alto' => 'Alto',

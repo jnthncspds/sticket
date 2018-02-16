@@ -43,10 +43,11 @@ class AdminController extends Controller
       $user = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
       $em = $this->getDoctrine()->getManager();
       $query = $em->createQuery('SELECT
-        u.id, u.username, u.email, t.titulo
+        u.username, u.email, t.titulo, t.id, t.idUsuario
         FROM AppBundle:User u
         INNER JOIN AppBundle:Ticket t
         WITH u.id = t.idUsuario');
+
 
         $usuario = $query->getResult();
       return $this->render('crud/user.html.twig', array('usuario' => $usuario));

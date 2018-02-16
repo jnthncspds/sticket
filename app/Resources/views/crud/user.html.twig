@@ -9,15 +9,18 @@
       <th scope="col">Nombre de usuario</th>
       <th scope="col">Email</th>
       <th scope="col">Nombre de ticket</th>
+      <th scope="col">Acción (ticket)</th>
     </tr>
   </thead>
   <tbody>
     {% for u in usuario  %}
     <tr>
-      <th scope="row">{{u.id}}</th>
+      <th scope="row">{{u.idUsuario}}</th>
       <td>{{u.username}}</td>
       <td>{{u.email}}</td>
       <td>{{u.titulo}}</td>
+      <td><a href="{{ path('detalles', {'id': u.id}) }}" class="btn btn-success">Detalles</a>
+        <a href="{{ path('editar', {'id': u.id}) }}" class="btn btn-default">Editar</a></td>
     </tr>
       {% endfor %}
   </tbody>

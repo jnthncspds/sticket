@@ -1,0 +1,39 @@
+{% extends 'dashboard/controlpanel.html.twig' %}
+{% block body %}
+
+{{form_start(form)}}
+{{form_widget(form)}}
+{{form_end(form)}}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Titulo</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Prioridad</th>
+
+      <th scope="col">Accion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+
+          {% for t in ticket %}
+
+      <th scope="row">{{t.id}}</th>
+      <td>{{t.titulo}}</td>
+      <td>{{t.fecha|date('d/m/y')}}</td>
+      <td>{{t.estado}}</td>
+      <td>{{t.prioridad}}</td>
+      <td><a href="{{ path('detalles', {'id': t.id}) }}" class="btn btn-success">Detalles</a>
+        <a href="{{ path('editar', {'id': t.id}) }}" class="btn btn-default">Editar</a>
+        <a href="{{ path('borrar', {'id': t.id}) }}" class="btn btn-danger">Borrar</a>
+      </td>
+    </tr>
+
+      {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
