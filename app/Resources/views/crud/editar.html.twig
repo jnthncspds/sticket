@@ -2,7 +2,15 @@
 {% block body %}
 <h2>Editar</h2>
 {{ form_start(form) }}
-{{ form_widget(form) }}
+{{ form_row(form.titulo)}}
+{{ form_row(form.descripcion)}}
+<table>
+  <thead>
+    <th scope="col">{{form_row(form.categoria)}}</th>
+    <th scope="col">{{form_row(form.estado)}}</th>
+    <th scope="col">{{form_row(form.prioridad)}}</th>
+  </thead>
+</table>
 {{ form_end(form) }}
 
 {% endblock %}

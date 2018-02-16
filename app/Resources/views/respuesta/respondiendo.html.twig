@@ -5,7 +5,14 @@
 {{ form_row(form.titulo, {'label': 'Encabezado:'})}}
 {{ form_row(form.respuesta, {'label': 'Respuesta:'})}}
 <h3>Acerca del ticket:</h3>
-{{ form_row(form.prioridad, {'label': 'Prioridad:'})}}
-{{ form_row(form.estado, {'label': 'Estado:'})}}
+<table>
+  <thead>
+    <th scope="col">
+    {{ form_row(form.prioridad, {'label': 'Prioridad:'})}}
+    </th>
+    <th scope="col">{{ form_row(form.estado, {'label': 'Estado:'})}}
+    </th>
+  </thead>
+</table>
 {{ form_end(form) }}
 {% endblock %}

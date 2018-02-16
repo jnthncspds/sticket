@@ -1,11 +1,17 @@
 {% extends 'dashboard/controlpanel.html.twig' %}
 {% block body %}
-
+<h1>Lista de tickets según categoría</h1>
+<h2>Presione buscar para obtener una lista según la categoría</h2>
 {{form_start(form)}}
-{{form_widget(form)}}
+<table>
+  <thead>
+    <th scope="col">{{form_row(form.Categoria)}}</th>
+    <th scope="col">{{form_row(form.Buscar)}}</th>
+  </thead>
+</table>
 {{form_end(form)}}
 
-<table class="table">
+<table class="table" style="margin-top:25px">
   <thead>
     <tr>
       <th scope="col">#</th>
