@@ -100,4 +100,51 @@ class RespuestaController extends Controller
     'form' => $form->createView(),
   ));
   }
+
+  /**
+  * @Route("/mistickets/", name="mistickets")
+  */
+
+  public function misticketsAction(){
+    $user = $this->getUser();
+
+      $this->denyAccessUnlessGranted('ROLE_USUARIO', null, 'Unable to access this page!');
+
+      $em = $this->getDoctrine()->getManager();
+      $query = $em->createQuery('SELECT
+        u.username, t.id, t.idUsuario, t.titulo, t.descripcion, t.estado, t.fecha, t.categoria, t.prioridad
+        FROM AppBundle:User u
+        INNER JOIN AppBundle:Ticket t
+        WITH u.id = t.idUsuario
+        WHERE u.id = :id')->setParameter('id', $user->getId());
+
+      $ticket = $query->getResult();
+
+      return $this->render('respuesta/panelusuario.html.twig', array('ticket' => $ticket));
+  }
+
+  /**
+  * @Route("/mistickets/{id}", name="respuestaUsuario")
+  */
+
+  public function respuserAction($id){
+
+    $em = $this->getDoctrine()->getManager();
+    $query = $em->createQuery('SELECT
+      r.titulo, r.respuesta
+      FROM AppBundle:Respuesta r
+      INNER JOIN AppBundle:Ticket t
+      WITH r.ticketId = t.id
+      WHERE t.id = :id')->setParameter('id', $id);
+
+      $ticket = $query->getResult();
+
+      if (empty($ticket)) {
+        return $this->redirectToRoute('mistickets');
+      }
+
+    return $this->render('respuesta/respuestausuario.html.twig', array(
+      'ticket' => $ticket
+    ));
+  }
 }
