@@ -139,9 +139,7 @@ class RespuestaController extends Controller
 
       $ticket = $query->getResult();
 
-      if (empty($ticket)) {
-        return $this->redirectToRoute('mistickets');
-      }
+
 
     return $this->render('respuesta/respuestausuario.html.twig', array(
       'ticket' => $ticket

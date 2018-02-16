@@ -15,7 +15,13 @@
   </head>
 
   <body>
+    {% if ticket is empty %}
+    <main role="main" class="container">
+    <h1 style="margin-top:100px">No hay respuesta aun para su ticket.</h1>
+    <p>Vuelva al  <a href="{{path('mistickets')}}">Panel de Usuario</a></p>
+  </main>
 
+    {% else %}
     <!-- Begin page content -->
     <main role="main" class="container">
       <h1 class="mt-5">{{ticket[0]['titulo']}}</h1>
@@ -23,9 +29,10 @@
       <p>Vuelva al  <a href="{{path('mistickets')}}">Panel de Usuario</a></p>
     </main>
 
+    {% endif %}
     <footer class="footer">
       <div class="container">
-        <span class="text-muted">Place sticky footer content here.</span>
+        <span class="text-muted">Sticket 2018</span>
       </div>
     </footer>
   </body>
